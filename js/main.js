@@ -1,92 +1,70 @@
+*----- constants -----*/
+const wordChoice = [
+    'sun',
+    'ufo',
+    'moon',
+    'mars',
+    'earth',
+    'pluto',
+    'venus',
+    'saturn',
+    'uranus',
+    'jupiter',
+    'mercury',
+    'spaceman'
+  ];
+  const maxWrong = 6;
+  const IMGS = [
+    "img/spaceman.png/spaceman-0.jpg",
+    "img/spaceman.png/spaceman-1.jpg",
+    "img/spaceman.png/spaceman-2.jpg",
+    "img/spaceman.png/spaceman-3.jpg",
+    "img/spaceman.png/spaceman-4.jpg",
+    "img/spaceman.png/spaceman-5.jpg",
+    "img/spaceman.png/spaceman-6.jpg",
+];
+/*----- state variables -----*/
+let answer = " ";
+let mistakes = 0;
+let wrongGuesses = [];
+let wordStatus = null;
+let gameStatus;
+/*----- cached elements  -----*/
+const message = document.getElementById('message');
+const guess = document.getElementById('spotLight');
+const letterButtons = [...document.getElementById('alphabet')];
+const playButton =  document.getElementById('play');
+const spaceman = document.querySelector('img');
+/*----- event listeners -----*/
+document.querySelector('section').addEventListner('click', handleClick)
+playButton.addEventListener('click', handleClick)
 
+  /*----- functions -----*/
 
-	/*----- constants -----*/
-	const wordList = [""];
-
-
-	/*----- state variables -----*/
-	let word = "";
-	let gameOver = false;
-
-	/*----- cached elements  -----*/
-	let guessedLetters = [];
-	let remainingGuesses = 6;
-
-	/*----- event listeners -----*/
-
-
-	/*----- functions -----*/
-	selectWord();
-	handleGuess();
-	checkGameStatus();
-	checkWin();
-	checkLose();
-
-
-// Start the game
-	selectWord();
-
-// Function to select a random word from the word list
-	function selectWord() {
-		word = wordList[Math.floor(Math.random() * wordList.length)];
-	}
-
-// Function to handle player's guess
-	function handleGuess(letter) {
-		if (guessedLetters.includes(letter)) {
-		alert('You already guessed that letter. Please try again.');
-	} else {
-		guessedLetters.push(letter);
-		if (word.includes(letter)) {
-			alert('Correct! The word contains the letter ' + letter);
-		} else {
-			alert('Incorrect. The word does not contain the letter ' + letter);
-			remainingGuesses--;
-		}
-		checkGameStatus();
-	}
+function handleClick (evt) {
+    const letter = evt.target.textContent
+    if (gameStatus || evt.target.tagName !== "BUTTON" || wrongGuesses.includes(letter) || answer.includes(letter)) return;
+    if (answer.includes(letter)) {
+      secretWord.forEach((elm, idx) => {
+       if (elm === letter) wordStatus[idx] = letter;
+      })
+    } else {
+        wrongGuesses.push(letter);
+    }
+    render();
 }
 
-// Function to check the game status
-	function checkGameStatus() {
-	if (checkWin()) {
-	   alert('You wone!');
-	   gameOver = true;
-	} else if (checkLose()) {
-	   alert('You lost. The word was ' + word);
-	   gameOver = true;
-	} else {
-	   alert('Guess a letter. You have ' + remainingGuesses + ' remaining guesses.');
-	}
+function innt() {
+ answer = words[Math.floor(Math.random() * words.length)]
+ wrongGuesses = [];
+wordStatus = secretWord.map(ltr => '_')
+gameStatus = null;
+render ()
 }
 
-// Function to check if the player has won
-	function checkWin() {
-		for (let i = 0; i < word.length; i++) {
-			if(!guessedLetters.includes(word[i])) {
-				return false;
-			}
-		}
-		return true;
-	}
+init()
 
-// Function to check if the player has lost
-	function checkLose() {
-		if (remainingGuesses === 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-// Start the game
-selectWord();
-
-
-
-
-
-// ICEBOX:
-// you could add some endgame interaction like play again
-//  or show the word again
-// some cool animation
+function render () {
+    guess.textContent = wordStatus.join("")
+    spaceman.src = `img/spaceman-${wrongGuesses.length}.jpg`;
+}
