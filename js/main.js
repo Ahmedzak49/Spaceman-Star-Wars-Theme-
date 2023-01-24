@@ -2,20 +2,62 @@
 
 
 	/*----- constants -----*/
+	const wordList = [""];
 
 
 	/*----- state variables -----*/
-
+	let word = "";
+	let gameOver = false;
 
 	/*----- cached elements  -----*/
-
+	let guessedLetters = [];
+	let remainingGuesses = 6;
 
 	/*----- event listeners -----*/
 
 
 	/*----- functions -----*/
+	selectWord();
+	handleGuess();
+	checkGameStatus();
+	checkWin();
+	checkLose();
 
-  
+
+// Start the game
+	selectWord();
+
+// Function to select a random word from the word list
+	function selectWord() {
+		word = wordList[Math.floor(Math.random() * wordList.length)];
+	}
+
+// Function to handle player's guess
+	function handleGuess(letter) {
+		alert('You already guessed that letter. Please try again.');
+	} else {
+		guessedLetters.push(letter);
+		if (word.includes(letter)) {
+			alert('Correct! The word contains the letter ' + letter);
+		} else {
+			alert('Incorrect. The word does not contain the letter ' + letter);
+			remainingGuesses--;
+		}
+		checkGameStatus();
+	}
+
+// Function to check the game status
+	function checkGameStatus() {
+		
+	}
+
+
+
+
+
+
+
+
 // Space-Man:
 
 // 1. Create an array of words for the game
@@ -54,6 +96,7 @@
 
 
 // 14. The game is over and the player can no longer input guesses.
+
 
 
 // ICEBOX:
