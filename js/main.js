@@ -1,4 +1,3 @@
-// Pseudocode
 
 
 	/*----- constants -----*/
@@ -34,6 +33,7 @@
 
 // Function to handle player's guess
 	function handleGuess(letter) {
+		if (guessedLetters.includes(letter)) {
 		alert('You already guessed that letter. Please try again.');
 	} else {
 		guessedLetters.push(letter);
@@ -45,10 +45,10 @@
 		}
 		checkGameStatus();
 	}
-
+	}
 // Function to check the game status
 	function checkGameStatus() {
-		
+
 	}
 
 
