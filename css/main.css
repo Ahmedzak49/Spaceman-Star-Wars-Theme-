@@ -1,0 +1,35 @@
+
+
+
+  const WORD_CHOICE = {
+    names: [
+        "Mace Windu",
+        "Scout Trooper",
+        "Anakin Skywalker",
+        "Strom Trooper",
+        "Jabba The Hutt",
+        "Obiwan Kenobi ",
+        "Rey",
+        "Yoda",
+        "Chewbacca",
+        "Luke Skywalker",
+        "Darth Vador",
+        "Han Solo",
+    ],
+    planets: [
+        "Endor",
+        "Naboo",
+        "Coruscant",
+        "Bespin",
+        "Tatooine",
+        "Cantonica"
+    ],
+    ships: [
+        "Death Star",
+        "Executor",
+        "Home One",
+        "Imperial Shuttle",
+        "Millennium Falcon",
+        "Star Destroyer",
+    ],
+};

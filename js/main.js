@@ -1,18 +1,36 @@
-*----- constants -----*/
-const wordChoice = [
-    'sun',
-    'ufo',
-    'moon',
-    'mars',
-    'earth',
-    'pluto',
-    'venus',
-    'saturn',
-    'uranus',
-    'jupiter',
-    'mercury',
-    'spaceman'
-  ];
+// *----- constants -----*/
+const WORD_CHOICE = {
+    names: [
+        "Mace Windu",
+        "Scout Trooper",
+        "Anakin Skywalker",
+        "Strom Trooper",
+        "Jabba The Hutt",
+        "Obiwan Kenobi ",
+        "Rey",
+        "Yoda",
+        "Chewbacca",
+        "Luke Skywalker",
+        "Darth Vador",
+        "Han Solo",
+    ],
+    planets: [
+        "Endor",
+        "Naboo",
+        "Coruscant",
+        "Bespin",
+        "Tatooine",
+        "Cantonica"
+    ],
+    ships: [
+        "Death Star",
+        "Executor",
+        "Home One",
+        "Imperial Shuttle",
+        "Millennium Falcon",
+        "Star Destroyer",
+    ],
+};
   const maxWrong = 6;
   const IMGS = [
     "img/spaceman.png/spaceman-0.jpg",
@@ -32,20 +50,21 @@ let gameStatus;
 /*----- cached elements  -----*/
 const message = document.getElementById('message');
 const guess = document.getElementById('spotLight');
-const letterButtons = [...document.getElementById('alphabet')];
-const playButton =  document.getElementById('play');
+const letterButtons = [...document.querySelectorAll('section > button')];
+const playButton =  document.getElementById('playButton');
 const spaceman = document.querySelector('img');
 /*----- event listeners -----*/
-document.querySelector('section').addEventListner('click', handleClick)
+document.querySelector('section').addEventListener('click', handleClick)
 playButton.addEventListener('click', handleClick)
 
   /*----- functions -----*/
 
 function handleClick (evt) {
     const letter = evt.target.textContent
-    if (gameStatus || evt.target.tagName !== "BUTTON" || wrongGuesses.includes(letter) || answer.includes(letter)) return;
+    if (gameStatus || evt.target.tagName !== "BUTTON" || wrongGuesses.includes(letter) || wordStatus.includes(letter)) return;
     if (answer.includes(letter)) {
-      secretWord.forEach((elm, idx) => {
+        console.log('right answer')
+        answer.forEach((elm, idx) => {
        if (elm === letter) wordStatus[idx] = letter;
       })
     } else {
@@ -54,11 +73,11 @@ function handleClick (evt) {
     render();
 }
 
-function innt() {
- answer = words[Math.floor(Math.random() * words.length)]
+function init() {
+ answer = WORD_CHOICE[Math.floor(Math.random() * WORD_CHOICE.length)].split('')
  wrongGuesses = [];
-wordStatus = secretWord.map(ltr => '_')
-gameStatus = null;
+ wordStatus = answer.map(ltr => ltr === " " ? " " : " _ ")
+ gameStatus = null;
 render ()
 }
 
