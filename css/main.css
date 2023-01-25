@@ -1,35 +1,50 @@
+.names-container, .planets-container, .ships-container {
+    height: 40px;
+    width: 85px;
+    display: inline-block;
+    background-color: #F5F5F5;
+    border: 1px solid #000;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
 
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 10px;
+    margin-top: 20px;
+}
 
+.my-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-  const WORD_CHOICE = {
-    names: [
-        "Mace Windu",
-        "Scout Trooper",
-        "Anakin Skywalker",
-        "Strom Trooper",
-        "Jabba The Hutt",
-        "Obiwan Kenobi ",
-        "Rey",
-        "Yoda",
-        "Chewbacca",
-        "Luke Skywalker",
-        "Darth Vador",
-        "Han Solo",
-    ],
-    planets: [
-        "Endor",
-        "Naboo",
-        "Coruscant",
-        "Bespin",
-        "Tatooine",
-        "Cantonica"
-    ],
-    ships: [
-        "Death Star",
-        "Executor",
-        "Home One",
-        "Imperial Shuttle",
-        "Millennium Falcon",
-        "Star Destroyer",
-    ],
-};
+.my-button:hover {
+    background-color: #3e8e41;
+}
+
+.button {
+    background-color: yellow;
+    color: black;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+.button:hover {
+background-color:  red;
+}
