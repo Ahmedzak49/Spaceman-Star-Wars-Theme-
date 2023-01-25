@@ -19,18 +19,27 @@
 }
 
 .my-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 4px;
-    font-family: "Poppins", sans-serif;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 9px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    background-color: #ddd;
+    background-image: url('https://grid.gograph.com/blank-white-computer-key-vector-stock_gg62390653.jpg');
+    background-size: cover;
+    background-size: contain;
+    background-size: 100% 100%;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    transition: transform 0.2s;
 }
 
+
 .my-button:hover {
+    transform: scale(0.9);
     background-color: #3e8e41;
+
 }
 
 .button {
@@ -49,7 +58,13 @@
 background-color:  red;
 }
 
-.bg-image {
+#spotLight {
+    color: white;
+    font-size: 20px;
+}
+
+body {
     background-image: url('https://wallpapercave.com/wp/fETgk7i.jpg');
     background-position: center center;
-  }
+    color: white;
+}

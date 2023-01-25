@@ -1,6 +1,6 @@
 // *----- constants -----*/
 const WORD_CHOICE = {
-    names: [
+    Names: [
         "Mace Windu",
         "Scout Trooper",
         "Anakin Skywalker",
@@ -14,7 +14,7 @@ const WORD_CHOICE = {
         "Darth Vador",
         "Han Solo",
     ],
-    planets: [
+    Planets: [
         "Endor",
         "Naboo",
         "Coruscant",
@@ -22,7 +22,7 @@ const WORD_CHOICE = {
         "Tatooine",
         "Cantonica"
     ],
-    ships: [
+    Ships: [
         "Death Star",
         "Executor",
         "Home One",
@@ -47,43 +47,77 @@ let mistakes = 0;
 let wrongGuesses = [];
 let wordStatus = null;
 let gameStatus;
+let catagories = false;
 /*----- cached elements  -----*/
 const message = document.getElementById('message');
 const guess = document.getElementById('spotLight');
 const letterButtons = [...document.querySelectorAll('section > button')];
 const playButton =  document.getElementById('playButton');
 const spaceman = document.querySelector('img');
+const catButton = document.querySelector('.catBtns');
 /*----- event listeners -----*/
 document.querySelector('section').addEventListener('click', handleClick)
-playButton.addEventListener('click', handleClick)
+playButton.addEventListener('click', init)
+
+catButton.addEventListener('click', handleCatagorie)
 
   /*----- functions -----*/
+
+  function handleCatagorie(evt) {
+    catagories = evt.target.textContent
+console.log(WORD_CHOICE[catagories]);
+console.log(evt.target);
+    answer = WORD_CHOICE[catagories][Math.floor(Math.random() * WORD_CHOICE[catagories].length)].split('')
+    wordStatus = answer.map(ltr => ltr === " " ? " " : " _ ")
+    render();
+  }
 
 function handleClick (evt) {
     const letter = evt.target.textContent
     if (gameStatus || evt.target.tagName !== "BUTTON" || wrongGuesses.includes(letter) || wordStatus.includes(letter)) return;
-    if (answer.includes(letter)) {
+    if (answer.join('').toLowerCase().includes(letter)) {
         console.log('right answer')
         answer.forEach((elm, idx) => {
-       if (elm === letter) wordStatus[idx] = letter;
+       if (elm.toLowerCase() === letter) wordStatus[idx] = elm;
       })
+      if (answer.join('') === wordStatus.join('')) {
+        gameStatus = 'W';
+      }
     } else {
         wrongGuesses.push(letter);
+        if (wrongGuesses.length === 6) {
+            gameStatus = 'L'
+        }
     }
     render();
 }
 
 function init() {
- answer = WORD_CHOICE[Math.floor(Math.random() * WORD_CHOICE.length)].split('')
  wrongGuesses = [];
- wordStatus = answer.map(ltr => ltr === " " ? " " : " _ ")
  gameStatus = null;
+ wordStatus = null;
+ catagories = null;
 render ()
+
 }
 
 init()
 
 function render () {
-    guess.textContent = wordStatus.join("")
+    document.querySelector('section').style.visibility = catagories ? 'visible': 'hidden';
+    document.querySelector('.catBtns').style.visibility = catagories ? 'hidden' : 'visible';
+    guess.textContent = wordStatus ? wordStatus.join("") : ''
     spaceman.src = `img/spaceman-${wrongGuesses.length}.jpg`;
+    renderMessage();
+    playButton.style.visibility = gameStatus ? 'visible' : 'hidden';
+}
+
+function renderMessage() {
+    if (gameStatus === 'W') {
+        message.textContent = 'You Win!!!'
+    } else if (gameStatus === 'L'){
+        message.textContent = 'You Lose!'
+    } else {
+        message.textContent = ''
+    }
 }
