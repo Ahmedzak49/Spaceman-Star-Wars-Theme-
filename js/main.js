@@ -55,6 +55,8 @@ const letterButtons = [...document.querySelectorAll('section > button')];
 const playButton =  document.getElementById('playButton');
 const spaceman = document.querySelector('img');
 const catButton = document.querySelector('.catBtns');
+const guessedLettersContainer = document.querySelector('.guessed-letters-container');
+const guessedLetters = document.getElementById('guessed-letters');
 /*----- event listeners -----*/
 document.querySelector('section').addEventListener('click', handleClick)
 playButton.addEventListener('click', init)
@@ -72,6 +74,7 @@ console.log(evt.target);
     render();
   }
 
+  guessedLettersContainer.style.display = 'none';
 function handleClick (evt) {
     const letter = evt.target.textContent
     if (gameStatus || evt.target.tagName !== "BUTTON" || wrongGuesses.includes(letter) || wordStatus.includes(letter)) return;
@@ -85,6 +88,7 @@ function handleClick (evt) {
       }
     } else {
         wrongGuesses.push(letter);
+        guessedLettersContainer.style.display = 'block';
         if (wrongGuesses.length === 6) {
             gameStatus = 'L'
         }
@@ -110,6 +114,16 @@ function render () {
     spaceman.src = `img/spaceman-${wrongGuesses.length}.jpg`;
     renderMessage();
     playButton.style.visibility = gameStatus ? 'visible' : 'hidden';
+    guessedLetters.textContent = wrongGuesses.join(', ');
+    if (gameStatus) {
+        letterButtons.forEach(button => {
+          button.style.display = 'block';
+        });
+     }else {
+       letterButtons.forEach(button => {
+       button.style.display= 'none';
+     });
+   }
 }
 
 function renderMessage() {
@@ -120,4 +134,14 @@ function renderMessage() {
     } else {
         message.textContent = ''
     }
+}
+
+letterButtons.forEach(button => {
+    button.style.display = 'none';
+});
+
+if (gameStatus) {
+    letterButtons.forEach(button => {
+        button.style.visibility = 'visible';
+    })
 }
