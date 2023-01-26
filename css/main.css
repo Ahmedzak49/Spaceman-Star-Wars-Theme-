@@ -36,9 +36,10 @@
     margin-top: 50px;
     margin-right: 20px;
     border-radius: 9px;
-    background-color: red;
+    background-color: transparent;
     padding: 10px;
     font-family: "Poppins", sans-serif;
+    font-size: 25px;
     color: purple;
 }
 .main {
@@ -46,13 +47,23 @@
 }
 
 #message {
-    margin-bottom: 100px;
-    font-size: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: yellow;
+    animation: moveUp 15s ease-in-out;
   }
 
+@keyframes moveUp {
+    from {
+      top: 100%;
+    }
+    to {
+      top: 0%;
+    }
+  }
 
 
 .catBtns {
@@ -115,6 +126,31 @@
     background-color:  red;
 }
 
+#playButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 20px;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 200px;
+    border-radius: 114px;
+
+}
+
+
+#playButton:hover {
+    background-color: #3e8e41;
+}
+
+
 #spotLight {
     align-items: center;
     justify-content: center;
@@ -124,6 +160,8 @@
     margin: 0 auto;
 
 }
+
+
 
 
 body {

@@ -57,6 +57,7 @@ const spaceman = document.querySelector('img');
 const catButton = document.querySelector('.catBtns');
 const guessedLettersContainer = document.querySelector('.guessed-letters-container');
 const guessedLetters = document.getElementById('guessed-letters');
+
 /*----- event listeners -----*/
 document.querySelector('section').addEventListener('click', handleClick)
 playButton.addEventListener('click', init)
@@ -97,12 +98,13 @@ function handleClick (evt) {
 }
 
 function init() {
+
  wrongGuesses = [];
  gameStatus = null;
  wordStatus = null;
  catagories = null;
 render ()
-
+typeMessage('"A long time ago in a galaxy far, far away..."', 100);
 }
 
 init()
@@ -122,6 +124,7 @@ function render () {
      }else {
        letterButtons.forEach(button => {
        button.style.display= 'none';
+       messages.textContent = "";
      });
    }
 }
@@ -144,4 +147,18 @@ if (gameStatus) {
     letterButtons.forEach(button => {
         button.style.visibility = 'visible';
     })
+}
+
+function typeMessage(message, delay) {
+    let i = 0;
+    const messageEl = document.getElementById('message');
+    messageEl.textContent = '';
+    function printLetter() {
+        messageEl.textContent += message[i];
+        i++;
+        if (i < message.length) {
+            setTimeout(printLetter, delay);
+        }
+    }
+    printLetter();
 }
