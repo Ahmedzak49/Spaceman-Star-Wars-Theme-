@@ -45,18 +45,20 @@ const WORD_CHOICE = {
 let answer = " ";
 let mistakes = 0;
 let wrongGuesses = [];
+let allGuesses = [];
 let wordStatus = null;
 let gameStatus;
 let catagories = false;
 /*----- cached elements  -----*/
 const message = document.getElementById('message');
 const guess = document.getElementById('spotLight');
-const letterButtons = [...document.querySelectorAll('section > button')];
+const letterButtons = document.querySelectorAll('.button-grid > button');
 const playButton =  document.getElementById('playButton');
 const spaceman = document.querySelector('img');
 const catButton = document.querySelector('.catBtns');
 const guessedLettersContainer = document.querySelector('.guessed-letters-container');
 const guessedLetters = document.getElementById('guessed-letters');
+const Gstatus = document.getElementById('gameStatus');
 
 /*----- event listeners -----*/
 document.querySelector('section').addEventListener('click', handleClick)
@@ -70,14 +72,17 @@ catButton.addEventListener('click', handleCatagorie)
     catagories = evt.target.textContent
 console.log(WORD_CHOICE[catagories]);
 console.log(evt.target);
+message.style.visibility = 'hidden';
     answer = WORD_CHOICE[catagories][Math.floor(Math.random() * WORD_CHOICE[catagories].length)].split('')
     wordStatus = answer.map(ltr => ltr === " " ? " " : " _ ")
     render();
   }
 
-  guessedLettersContainer.style.display = 'none';
+
 function handleClick (evt) {
     const letter = evt.target.textContent
+    const target = evt.target;
+    allGuesses.push(target);
     if (gameStatus || evt.target.tagName !== "BUTTON" || wrongGuesses.includes(letter) || wordStatus.includes(letter)) return;
     if (answer.join('').toLowerCase().includes(letter)) {
         console.log('right answer')
@@ -89,7 +94,6 @@ function handleClick (evt) {
       }
     } else {
         wrongGuesses.push(letter);
-        guessedLettersContainer.style.display = 'block';
         if (wrongGuesses.length === 6) {
             gameStatus = 'L'
         }
@@ -98,56 +102,62 @@ function handleClick (evt) {
 }
 
 function init() {
-
+allGuesses= [];
  wrongGuesses = [];
  gameStatus = null;
- wordStatus = null;
+ wordStatus = [];
  catagories = null;
-render ()
 typeMessage('"A long time ago in a galaxy far, far away..."', 100);
+render();
 }
 
 init()
 
-function render () {
+function render() {
+    renderButtons();
     document.querySelector('section').style.visibility = catagories ? 'visible': 'hidden';
     document.querySelector('.catBtns').style.visibility = catagories ? 'hidden' : 'visible';
     guess.textContent = wordStatus ? wordStatus.join("") : ''
     spaceman.src = `img/spaceman-${wrongGuesses.length}.jpg`;
     renderMessage();
     playButton.style.visibility = gameStatus ? 'visible' : 'hidden';
-    guessedLetters.textContent = wrongGuesses.join(', ');
-    if (gameStatus) {
-        letterButtons.forEach(button => {
-          button.style.display = 'block';
-        });
-     }else {
-       letterButtons.forEach(button => {
-       button.style.display= 'none';
-       messages.textContent = "";
-     });
-   }
+    // guessedLetters.textContent = wrongGuesses.join(', ');
+    // if (gameStatus) {
+    //     letterButtons.forEach(button => {
+    //       button.style.display = 'block';
+    //     });
+    //  }else {
+    //    letterButtons.forEach(button => {
+    //    button.style.display= 'none';
+    //    messages.textContent = "";
+    //  });
+//    }
+}
+
+function renderButtons() {
+    console.log("hello");
+letterButtons.forEach( (button) => {
+    console.log(button);
+    if (!catagories || wordStatus.includes(button.textContent.toLowerCase()) || wrongGuesses.includes(button.textContent.toLowerCase())){
+        console.log('money')
+        button.style.visibility = 'hidden';
+    } else {
+        button.style.visibility = 'visible';
+    }
+})
 }
 
 function renderMessage() {
     if (gameStatus === 'W') {
-        message.textContent = 'You Win!!!'
+        Gstatus.textContent = 'You Win!!!'
     } else if (gameStatus === 'L'){
-        message.textContent = 'You Lose!'
+        Gstatus.textContent = 'You Lose!'
     } else {
-        message.textContent = ''
+        Gstatus.textContent = ''
     }
 }
 
-letterButtons.forEach(button => {
-    button.style.display = 'none';
-});
 
-if (gameStatus) {
-    letterButtons.forEach(button => {
-        button.style.visibility = 'visible';
-    })
-}
 
 function typeMessage(message, delay) {
     let i = 0;
