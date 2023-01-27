@@ -70,8 +70,6 @@ catButton.addEventListener('click', handleCatagorie)
 
 function handleCatagorie(evt) {
     catagories = evt.target.textContent
-    console.log(WORD_CHOICE[catagories]);
-    console.log(evt.target);
     message.style.visibility = 'hidden';
     answer = WORD_CHOICE[catagories][Math.floor(Math.random() * WORD_CHOICE[catagories].length)].split('')
     wordStatus = answer.map(ltr => ltr === " " ? " " : " _ ")
@@ -85,7 +83,6 @@ function handleClick(evt) {
     allGuesses.push(target);
     if (gameStatus || evt.target.tagName !== "BUTTON" || wrongGuesses.includes(letter) || wordStatus.includes(letter)) return;
     if (answer.join('').toLowerCase().includes(letter)) {
-        console.log('right answer')
         answer.forEach((elm, idx) => {
             if (elm.toLowerCase() === letter) wordStatus[idx] = elm;
         })
@@ -124,11 +121,8 @@ function render() {
 }
 
 function renderButtons() {
-    console.log("hello");
     letterButtons.forEach((button) => {
-        console.log(button);
         if (!catagories || wordStatus.includes(button.textContent.toLowerCase()) || wrongGuesses.includes(button.textContent.toLowerCase())) {
-            console.log('money')
             button.style.visibility = 'hidden';
         } else {
             button.style.visibility = 'visible';
@@ -161,4 +155,3 @@ function typeMessage(message, delay) {
     }
     printLetter();
 }
-
