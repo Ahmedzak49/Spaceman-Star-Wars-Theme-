@@ -28,7 +28,7 @@ Spaceman, also known as Hangman, is a classic word guessing game where the playe
 
 <details><summary>Game in Play</summary><img src="https://user-images.githubusercontent.com/108743041/215023044-bb89db4d-6bcd-41f4-b1f6-33e74f2f599e.png"></img></details>
 
-<details><summary>Win Screen</summary><img src="https://user-images.githubusercontent.com/31415907/214913024-68f0d6bb-72ac-47c8-ac70-54a39a1dd251.png"></img></details>
+<details><summary>Win Screen</summary><img src="https://user-images.githubusercontent.com/108743041/215023223-23f8304f-3cf0-4a48-9946-94cfc27043d6.png"></img></details>
 
 <details><summary>Gameover Screen</summary><img src="https://user-images.githubusercontent.com/31415907/214913099-a4d31998-df1f-4e55-9f89-5fcc7a3c50ed.png"></img></details>
 
@@ -60,7 +60,8 @@ Spaceman, also known as Hangman, is a classic word guessing game where the playe
 
 
 
-![img 2](https://user-images.githubusercontent.com/108743041/215023044-bb89db4d-6bcd-41f4-b1f6-33e74f2f599e.png)
+
+
 
 
 
