@@ -44,7 +44,7 @@ Spaceman, also known as Hangman, is a classic word guessing game where the playe
               ![VSCode](https://img.shields.io/badge/-VS_Code-05122A?style=flat&logo=visualstudio)
              
 ## 🎮  How To Play
-<strong>Step 1.</strong> Start the game by running the spaceman.js file.<br>
+<strong>Step 1.</strong> Start the game by running the Demo in the readME.<br>
 <strong>Step 2.</strong> The computer will randomly select a word from a pre-determined list of words.<br>
 <strong>Step 3.</strong> The player will be shown the number of letters in the word and will be prompted to guess a letter.<br>
 <strong>Step 4.</strong> If the letter is in the word, the correct positions of the letter will be revealed.<br>
