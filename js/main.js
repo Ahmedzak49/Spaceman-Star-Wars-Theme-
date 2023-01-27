@@ -31,8 +31,8 @@ const WORD_CHOICE = {
         "Star Destroyer",
     ],
 };
-  const maxWrong = 6;
-  const IMGS = [
+const maxWrong = 6;
+const IMGS = [
     "img/spaceman.png/spaceman-0.jpg",
     "img/spaceman.png/spaceman-1.jpg",
     "img/spaceman.png/spaceman-2.jpg",
@@ -53,7 +53,7 @@ let catagories = false;
 const message = document.getElementById('message');
 const guess = document.getElementById('spotLight');
 const letterButtons = document.querySelectorAll('.button-grid > button');
-const playButton =  document.getElementById('playButton');
+const playButton = document.getElementById('playButton');
 const spaceman = document.querySelector('img');
 const catButton = document.querySelector('.catBtns');
 const guessedLettersContainer = document.querySelector('.guessed-letters-container');
@@ -66,20 +66,20 @@ playButton.addEventListener('click', init)
 
 catButton.addEventListener('click', handleCatagorie)
 
-  /*----- functions -----*/
+/*----- functions -----*/
 
-  function handleCatagorie(evt) {
+function handleCatagorie(evt) {
     catagories = evt.target.textContent
-console.log(WORD_CHOICE[catagories]);
-console.log(evt.target);
-message.style.visibility = 'hidden';
+    console.log(WORD_CHOICE[catagories]);
+    console.log(evt.target);
+    message.style.visibility = 'hidden';
     answer = WORD_CHOICE[catagories][Math.floor(Math.random() * WORD_CHOICE[catagories].length)].split('')
     wordStatus = answer.map(ltr => ltr === " " ? " " : " _ ")
     render();
-  }
+}
 
 
-function handleClick (evt) {
+function handleClick(evt) {
     const letter = evt.target.textContent
     const target = evt.target;
     allGuesses.push(target);
@@ -87,11 +87,11 @@ function handleClick (evt) {
     if (answer.join('').toLowerCase().includes(letter)) {
         console.log('right answer')
         answer.forEach((elm, idx) => {
-       if (elm.toLowerCase() === letter) wordStatus[idx] = elm;
-      })
-      if (answer.join('') === wordStatus.join('')) {
-        gameStatus = 'W';
-      }
+            if (elm.toLowerCase() === letter) wordStatus[idx] = elm;
+        })
+        if (answer.join('') === wordStatus.join('')) {
+            gameStatus = 'W';
+        }
     } else {
         wrongGuesses.push(letter);
         if (wrongGuesses.length === 6) {
@@ -102,55 +102,44 @@ function handleClick (evt) {
 }
 
 function init() {
-allGuesses= [];
- wrongGuesses = [];
- gameStatus = null;
- wordStatus = [];
- catagories = null;
-typeMessage('"A long time ago in a galaxy far, far away..."', 100);
-render();
+    allGuesses = [];
+    wrongGuesses = [];
+    gameStatus = null;
+    wordStatus = [];
+    catagories = null;
+    typeMessage('"A long time ago in a galaxy far, far away..."', 100);
+    render();
 }
 
 init()
 
 function render() {
     renderButtons();
-    document.querySelector('section').style.visibility = catagories ? 'visible': 'hidden';
+    document.querySelector('section').style.visibility = catagories ? 'visible' : 'hidden';
     document.querySelector('.catBtns').style.visibility = catagories ? 'hidden' : 'visible';
     guess.textContent = wordStatus ? wordStatus.join("") : ''
     spaceman.src = `img/spaceman-${wrongGuesses.length}.jpg`;
     renderMessage();
     playButton.style.visibility = gameStatus ? 'visible' : 'hidden';
-    // guessedLetters.textContent = wrongGuesses.join(', ');
-    // if (gameStatus) {
-    //     letterButtons.forEach(button => {
-    //       button.style.display = 'block';
-    //     });
-    //  }else {
-    //    letterButtons.forEach(button => {
-    //    button.style.display= 'none';
-    //    messages.textContent = "";
-    //  });
-//    }
 }
 
 function renderButtons() {
     console.log("hello");
-letterButtons.forEach( (button) => {
-    console.log(button);
-    if (!catagories || wordStatus.includes(button.textContent.toLowerCase()) || wrongGuesses.includes(button.textContent.toLowerCase())){
-        console.log('money')
-        button.style.visibility = 'hidden';
-    } else {
-        button.style.visibility = 'visible';
-    }
-})
+    letterButtons.forEach((button) => {
+        console.log(button);
+        if (!catagories || wordStatus.includes(button.textContent.toLowerCase()) || wrongGuesses.includes(button.textContent.toLowerCase())) {
+            console.log('money')
+            button.style.visibility = 'hidden';
+        } else {
+            button.style.visibility = 'visible';
+        }
+    })
 }
 
 function renderMessage() {
     if (gameStatus === 'W') {
         Gstatus.textContent = 'You Win!!!'
-    } else if (gameStatus === 'L'){
+    } else if (gameStatus === 'L') {
         Gstatus.textContent = 'You Lose!'
     } else {
         Gstatus.textContent = ''
@@ -172,3 +161,8 @@ function typeMessage(message, delay) {
     }
     printLetter();
 }
+
+var audio = new Audio("sounds/win.mp3");
+audio.volume = 0.5; // set the volume to half
+audio.loop = true; // make the audio loop
+audio.play(); // play the audio

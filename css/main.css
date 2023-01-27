@@ -1,4 +1,6 @@
-.names-container, .planets-container, .ships-container {
+.names-container,
+.planets-container,
+.ships-container {
     height: 50px;
     width: 105px;
     display: inline-block;
@@ -14,19 +16,23 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .names-container:hover {
     transform: scale(0.9);
     background-color: #3e8e41;
 
 }
+
 .planets-container:hover {
     transform: scale(0.9);
     background-color: #3e8e41;
 }
+
 .ships-container:hover {
     transform: scale(0.9);
     background-color: #3e8e41;
 }
+
 .guessed-letters-container {
     position: absolute;
     top: 0;
@@ -42,6 +48,7 @@
     font-size: 25px;
     color: purple;
 }
+
 .main {
     text-align: center;
 }
@@ -54,16 +61,17 @@
     text-align: center;
     color: yellow;
     animation: moveUp 15s ease-in-out;
-  }
+}
 
 @keyframes moveUp {
     from {
-      top: 100%;
+        top: 100%;
     }
+
     to {
-      top: 0%;
+        top: 0%;
     }
-  }
+}
 
 
 .catBtns {
@@ -125,7 +133,7 @@
 
 .button:hover {
     transform: scale(0.9);
-    background-color:  red;
+    background-color: red;
 }
 
 #playButton {
