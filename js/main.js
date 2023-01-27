@@ -162,7 +162,3 @@ function typeMessage(message, delay) {
     printLetter();
 }
 
-var audio = new Audio("sounds/win.mp3");
-audio.volume = 0.5; // set the volume to half
-audio.loop = true; // make the audio loop
-audio.play(); // play the audio
