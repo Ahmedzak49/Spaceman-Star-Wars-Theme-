@@ -32,6 +32,8 @@ Spaceman, also known as Hangman, is a classic word guessing game where the playe
 
 <details><summary>You Lose!</summary><img src="https://user-images.githubusercontent.com/108743041/215023628-a7d432ee-d553-469a-9161-254b769489ed.png"></img></details>
 
+<details><summary>Wireframe</summary><img width="1332" alt="Screenshot 2023-01-27 at 7 27 41 AM" src="https://user-images.githubusercontent.com/108743041/215141203-848b5f0b-6f5b-45f5-8d00-a9118f800a4e.png"></img></details>
+
 ## :computer: Technologies Used
   ![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=html5)
     ![CSS3](https://img.shields.io/badge/-CSS-05122A?style=flat&logo=css3)
@@ -57,6 +59,7 @@ Spaceman, also known as Hangman, is a classic word guessing game where the playe
 🎙️  Add character's voice audio when the game has ended.<br>
 🌌  Add background theme animation while game is in play.<br>
 </div>
+
 
 
 
