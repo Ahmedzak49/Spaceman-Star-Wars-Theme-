@@ -1,5 +1,5 @@
 <div>
-<img src="https://github.com/wKategianes/Mamma-Mia--Match-2/blob/main/imgs/Mamma%20Mia!%20Match%202.png?raw=true">
+<img src="https://user-images.githubusercontent.com/108743041/215025638-7beacce8-4100-419c-9fa3-c95689e20cce.png"></img>
 </div>
 
 #
@@ -30,7 +30,7 @@ Spaceman, also known as Hangman, is a classic word guessing game where the playe
 
 <details><summary>Win Screen</summary><img src="https://user-images.githubusercontent.com/108743041/215023223-23f8304f-3cf0-4a48-9946-94cfc27043d6.png"></img></details>
 
-<details><summary>Gameover Screen</summary><img src="https://user-images.githubusercontent.com/31415907/214913099-a4d31998-df1f-4e55-9f89-5fcc7a3c50ed.png"></img></details>
+<details><summary>You Lose</summary><img src="https://user-images.githubusercontent.com/108743041/215023628-a7d432ee-d553-469a-9161-254b769489ed.png"></img></details>
 
 ## :computer: Technologies Used
   ![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=html5)
@@ -60,6 +60,10 @@ Spaceman, also known as Hangman, is a classic word guessing game where the playe
 
 
 
+
+
+
+![scuffed](https://user-images.githubusercontent.com/108743041/215025638-7beacce8-4100-419c-9fa3-c95689e20cce.png)
 
 
 
